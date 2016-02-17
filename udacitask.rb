@@ -2,10 +2,10 @@ require_relative 'todolist.rb'
 # Creates a new todo list
 my_todo = TodoList.new("Get busy with it!")
 # Add four new items
-my_todo.add_item("Finish English essay","School")
-my_todo.add_item("Take quiz for biology","School")
-my_todo.add_item("Talk to my boss about raise","Work")
-my_todo.add_item("Finish Nanodegree","Self-Development")
+my_todo.add_item("Finish English essay","School","12/13/2016")
+my_todo.add_item("Take quiz for biology","School","4/04/2016")
+my_todo.add_item("Talk to my boss about raise","Work","5/10/2016")
+my_todo.add_item("Finish Nanodegree","Self-Development","2/20/2016")
 # Print the list
 my_todo.show
 # Delete the first item

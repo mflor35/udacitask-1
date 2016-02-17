@@ -8,8 +8,8 @@ class TodoList
     end
 
     # Creates a new Item and adds it to the array of Items
-    def add_item(new_item,category)
-      item = Item.new(new_item,category)
+    def add_item(new_item,category,date_due)
+      item = Item.new(new_item,category,date_due)
       @items.push(item)
     end
 
@@ -30,7 +30,7 @@ class TodoList
 
     # Displays the items in the list in a nice way
     def show
-      header = "|%2s|%-30s|%20s|%20s|\n"%["ID","Task","Status","Category"]
+      header = "|%2s|%-30s|%20s|%20s|%15s\n"%["ID","Task","Status","Category","Date Due"]
 
       puts @title
       puts "-"*(header.length - 1)
@@ -38,7 +38,7 @@ class TodoList
       puts header
       puts "-"*(header.length - 1)
       @items.each do |item|
-        printf "|%2s|%-30s|%20s|%20s|\n","#{item.get_id}","#{item.get_description}","Completed:#{item.completed?}","#{item.get_category}"
+        printf "|%2s|%-30s|%20s|%20s|%15s|\n","#{item.get_id}","#{item.get_description}","#{item.completed? ? "Done":"Not Done"}","#{item.get_category}","#{item.due_date}"
       end
       puts "-"*(header.length - 1)
       puts
@@ -63,17 +63,18 @@ class TodoList
         find_item(item_description).done
     end
   end
+
   def export_to_file
     filename = @title.downcase.tr(" ","_")
     puts "Exporting \"#{@title}\" to #{filename}.txt"
     export_file = File.new("#{filename}.txt","w+")
-    header = "|%2s|%-30s|%20s|%20s|\n"%["ID","Task","Status","Category"]
+    header = "|%2s|%-30s|%20s|%20s|%15s|\n"%["ID","Task","Status","Category","Date Due"]
     export_file.write(@title+"\n")
     export_file.write("-"*(header.length - 1)+"\n")
     export_file.write(header)
     export_file.write("-"*(header.length - 1)+"\n")
     @items.each do |item|
-      export_file.write("|%2s|%-30s|%20s|%20s|\n"%["#{item.get_id}","#{item.get_description}","Completed:#{item.completed?}","#{item.get_category}"])
+      export_file.write("|%2s|%-30s|%20s|%20s|%15s|\n"%["#{item.get_id}","#{item.get_description}","#{item.completed? ? "Done":"Not Done"}","#{item.get_category}","#{item.due_date}"])
     end
     export_file.write("-"*(header.length - 1)+"\n")
     export_file.close
@@ -81,16 +82,17 @@ class TodoList
 end
 
 class Item
-    # methods and stuff go here
+    # methods and stuff go heres
     attr_reader :description,:id,:category
-    attr_writer :completed_status
+    attr_writer :completed_status,:due
 
     # Initilize item with a description
-    def initialize(item_description,item_category)
+    def initialize(item_description,item_category,date_due)
       @description = item_description
       @completed_status = false
       @category = item_category
       @id = rand(100)
+      @due = date_due
     end
 
     # resturns the completed_status
@@ -103,14 +105,23 @@ class Item
       @completed_status = true
     end
 
+    def not_done
+      @completed_status = false
+    end
+
     def get_description
       @description
     end
+
     def get_category
       @category
     end
+
     def chage_category(new_category)
       @category = new_category
+    end
+    def due_date
+      @due
     end
 
     def get_id
