@@ -63,6 +63,21 @@ class TodoList
         find_item(item_description).done
     end
   end
+  def export_to_file
+    filename = @title.downcase.tr(" ","_")
+    puts "Exporting \"#{@title}\" to #{filename}.txt"
+    export_file = File.new("#{filename}.txt","w+")
+    header = "|%2s|%-30s|%20s|%20s|\n"%["ID","Task","Status","Category"]
+    export_file.write(@title+"\n")
+    export_file.write("-"*(header.length - 1)+"\n")
+    export_file.write(header)
+    export_file.write("-"*(header.length - 1)+"\n")
+    @items.each do |item|
+      export_file.write("|%2s|%-30s|%20s|%20s|\n"%["#{item.get_id}","#{item.get_description}","Completed:#{item.completed?}","#{item.get_category}"])
+    end
+    export_file.write("-"*(header.length - 1)+"\n")
+    export_file.close
+  end
 end
 
 class Item
