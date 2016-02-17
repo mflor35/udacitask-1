@@ -1,0 +1,3 @@
+Feature#1: Add due dates to each item
+Feature#2: Add category to each item
+Feature#3: Export To-do list to a file (Google Calendar or Keep?)

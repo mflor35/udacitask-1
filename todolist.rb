@@ -8,8 +8,8 @@ class TodoList
     end
 
     # Creates a new Item and adds it to the array of Items
-    def add_item(new_item)
-      item = Item.new(new_item)
+    def add_item(new_item,category)
+      item = Item.new(new_item,category)
       @items.push(item)
     end
 
@@ -30,14 +30,17 @@ class TodoList
 
     # Displays the items in the list in a nice way
     def show
+      header = "|%2s|%-30s|%20s|%20s|\n"%["ID","Task","Status","Category"]
+
       puts @title
-      for i in 0..@title.length
-        print "-"
-      end
-      puts
+      puts "-"*(header.length - 1)
+
+      puts header
+      puts "-"*(header.length - 1)
       @items.each do |item|
-        puts "#{item.get_id}- #{item.get_description} %-5s"%"Completed:#{item.completed?}"
+        printf "|%2s|%-30s|%20s|%20s|\n","#{item.get_id}","#{item.get_description}","Completed:#{item.completed?}","#{item.get_category}"
       end
+      puts "-"*(header.length - 1)
       puts
     end
 
@@ -64,13 +67,14 @@ end
 
 class Item
     # methods and stuff go here
-    attr_reader :description,:id
+    attr_reader :description,:id,:category
     attr_writer :completed_status
 
     # Initilize item with a description
-    def initialize(item_description)
+    def initialize(item_description,item_category)
       @description = item_description
       @completed_status = false
+      @category = item_category
       @id = rand(100)
     end
 
@@ -86,6 +90,12 @@ class Item
 
     def get_description
       @description
+    end
+    def get_category
+      @category
+    end
+    def chage_category(new_category)
+      @category = new_category
     end
 
     def get_id
