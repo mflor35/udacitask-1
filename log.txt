@@ -1,0 +1,47 @@
+commit 17b4bb6a093f77b316f88b485db46b6f237b5826
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 21:17:34 2016 -0800
+
+    Feature add due date to each task.
+
+commit 00979dc2ec530d924efce1719407653ff29046bf
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 20:02:14 2016 -0800
+
+    Feature export to file
+
+commit d8546a53b629e0f93f678b13ee9a94e0b481c2d7
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 19:45:35 2016 -0800
+
+    Add feature category. better format when showing list of tasks.
+
+commit 6e8a04648c583311380b12f76563e923e2432de3
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 18:50:07 2016 -0800
+
+     Methods needed to pass the tests on udasitask.rb
+
+commit 06980003a8d07c89cb3f84ebf25d0748a2358a5a
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 17:20:13 2016 -0800
+
+    Add tasks to the list and show method to display current items in the list.
+
+commit 63eab48b4fa2ead613b04e8734d1ac0aef07224b
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 15:58:59 2016 -0800
+
+    remove _started from files
+
+commit 1c215aef5dd866cede14d7d8e8fbd1e4a6229edc
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 15:46:53 2016 -0800
+
+    Possible methods
+
+commit 01dded12296affd051bc30f99e44e8a68cc66d06
+Author: Miguel Flores Silverio <floresmigu3l@gmail.com>
+Date:   Tue Feb 16 14:25:09 2016 -0800
+
+    initial commit. Project template.
